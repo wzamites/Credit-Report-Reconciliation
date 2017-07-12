@@ -13,10 +13,11 @@ F = open("/Users/bj_zamites/Desktop/Reconcile/062317/VT062317.csv", "r")
 VT = F.read().split('\r')
 F.close()
 
-#----- Get the CC report into 6 separate columns
+#----- CC report to 6 columns
+
 CCreport =[]
 
-#Find what line the thing actually starts on
+#Find what line the thing starts on
 for start in range(13):
     if CC[1][start:start+2] == '  ':
         break;
@@ -38,7 +39,9 @@ for ii in range(2,len(CC)-1):
 
         newline = [(thedate, cardtype, theprice, accountnum, registernum, transnum)]
         CCreport.append(newline)
+        
 #------ TLR to 6 columns
+        
 TLreport = []
 count = -1
 
@@ -64,7 +67,7 @@ for i in range(2,len(TL)-1):
         TLreport.append(newline)
 
 
-#------ the VT stript
+#------ VT to 6 columns
 
     #split the file into a list of lists
 count = -1
