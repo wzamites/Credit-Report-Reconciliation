@@ -43,6 +43,7 @@ for ii in range(2,len(CC)-1):
         CCtransnum.append(transnum)
         
 #------ TLR to 5 columns + 1 array of transaction numbers
+        #This is gonna remove the duplicates too
         
 TLreport = []
 TLtransnum = []
@@ -67,9 +68,15 @@ for i in range(2,len(TL)-1):
         regnum = TL[i][start+82]
         transnum = TL[i][start+94:start+98]
 
-        newline = (thedate, cardtype, amount, acctnumber, regnum)
+        newline = [thedate, cardtype, amount, acctnumber, regnum, transnum]
         TLreport.append(newline)
-        TLtransnum.append(transnum)
+
+#Removes Duplicates
+for line in TLreport:
+    if TLreport.count(line) > 1:
+        for i in range(TLreport.count(line)-1):
+            TLreport.remove(line)
+        
 
 
 #------ VT to 5 columns + 1
@@ -104,3 +111,7 @@ for i in range(1,len(VT)-1):
                    , acctnumber, regnum)
 
     VTreport.append(newline)
+
+#----- Combine them if they're unique
+
+    
