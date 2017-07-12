@@ -116,3 +116,9 @@ CCandTL = CCandTL + TLreport
 for line in CCreport:
     if not (line in TLreport):
         CCandTL.append(line)
+
+#get the transaction numbers into a separate thing
+TransactionNumbers = []
+for line in CCandTL:
+    TransactionNumbers.append(line[5])
+    del line[5]
