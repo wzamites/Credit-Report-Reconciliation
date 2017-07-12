@@ -16,6 +16,7 @@ F.close()
 #----- CC report to 6 columns
 
 CCreport =[]
+CCtransnum = []
 
 #Find what line the thing starts on
 for start in range(13):
@@ -37,12 +38,15 @@ for ii in range(2,len(CC)-1):
         registernum = CC[ii][start+78]
         transnum = CC[ii][start+84:start+88]
 
-        newline = [(thedate, cardtype, theprice, accountnum, registernum, transnum)]
+        newline = (thedate, cardtype, theprice, accountnum, registernum)
         CCreport.append(newline)
+        CCtransnum.append(transnum)
         
-#------ TLR to 6 columns
+#------ TLR to 5 columns + 1 array of transaction numbers
         
 TLreport = []
+TLtransnum = []
+
 count = -1
 
 for start in range(10):
@@ -63,11 +67,12 @@ for i in range(2,len(TL)-1):
         regnum = TL[i][start+82]
         transnum = TL[i][start+94:start+98]
 
-        newline = (thedate, cardtype, amount, acctnumber, regnum, transnum)
+        newline = (thedate, cardtype, amount, acctnumber, regnum)
         TLreport.append(newline)
+        TLtransnum.append(transnum)
 
 
-#------ VT to 6 columns
+#------ VT to 5 columns + 1
 
     #split the file into a list of lists
 count = -1
@@ -93,9 +98,9 @@ for i in range(1,len(VT)-1):
 
     if approvedamount == '':
         newline = (thedate, cardtype, '%.2f' % (float(transamount) * -1)
-                   , acctnumber, regnum, '')
+                   , acctnumber, regnum)
     else:
         newline = (thedate, cardtype, '%.2f' % float(approvedamount)
-                   , acctnumber, regnum, '')
+                   , acctnumber, regnum)
 
     VTreport.append(newline)
