@@ -16,7 +16,6 @@ F.close()
 #----- CC report to 6 columns
 
 CCreport =[]
-CCtransnum = []
 
 #Find what line the thing starts on
 for start in range(13):
@@ -38,15 +37,13 @@ for ii in range(2,len(CC)-1):
         registernum = CC[ii][start+78]
         transnum = CC[ii][start+84:start+88]
 
-        newline = (thedate, cardtype, theprice, accountnum, registernum)
+        newline = [thedate, cardtype, theprice, accountnum, registernum, transnum]
         CCreport.append(newline)
-        CCtransnum.append(transnum)
         
 #------ TLR to 5 columns + 1 array of transaction numbers
         #This is gonna remove the duplicates too
         
 TLreport = []
-TLtransnum = []
 
 count = -1
 
@@ -76,8 +73,8 @@ for line in TLreport:
     if TLreport.count(line) > 1:
         for i in range(TLreport.count(line)-1):
             TLreport.remove(line)
-        
 
+#Combine CC and TR
 
 #------ VT to 5 columns + 1
 
@@ -112,6 +109,10 @@ for i in range(1,len(VT)-1):
 
     VTreport.append(newline)
 
-#----- Combine them if they're unique
+#----- Combine CC and TR if they're unique
+CCandTL = []
+CCandTL = CCandTL + TLreport
 
-    
+for line in CCreport:
+    if not (line in TLreport):
+        CCandTL.append(line)
