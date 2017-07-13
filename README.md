@@ -1,6 +1,10 @@
 # Credit-Report-Reconciliation
 Learn the differences between three reports with a GUI
 
+FYI: This program does not store, collect or pull financial data from anywhere. It 
+requires the user to download necessary files with valid login credentials. The program
+only reads and writes masked card numbers (last 4 digits). 
+
 This project is to take poorly formatted reports in .csv and easily show the differences
 between the three lists. These are lists of daily transactions run through a cash register
 and each day it's necessary to be sure that the report from the credit card company 
@@ -29,7 +33,7 @@ Its buttons execute the script
 
 Read.py:
 The goal here is the same as always, although I'd like to find a way to have the user drag the
-three files (either separately or all at once) over the UI window, then have the code automatically
-execute once the three separate files have been pointed to. This would reduce the number of clicks
-by about 15 since the original version, since it wouldn't be necessary to point to each separate
-file individually.
+three files (either separately or all at once) over the UI window, then have the code 
+automatically execute once the three separate files have been pointed to. This would reduce 
+the number of clicks by about 15 since the original version, since it wouldn't be necessary 
+to point to each separate file individually.
