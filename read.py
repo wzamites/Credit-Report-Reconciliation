@@ -1,15 +1,15 @@
 from decimal import *
 
 #---- Import the files
-F = open("/Users/bj_zamites/Desktop/Reconcile/062317/062317.csv", "r")
+F = open("/Users/bj_zamites/Desktop/Reports/Reconcile/062317/062317.csv", "r")
 TL = F.read().split('\r')
 F.close()
 
-F = open("/Users/bj_zamites/Desktop/Reconcile/062317/cc06232017.csv", "r")
+F = open("/Users/bj_zamites/Desktop/Reports/Reconcile/062317/cc06232017.csv", "r")
 CC = F.read().split('\r')
 F.close()
 
-F = open("/Users/bj_zamites/Desktop/Reconcile/062317/VT062317.csv", "r")
+F = open("/Users/bj_zamites/Desktop/Reports/Reconcile/062317/VT062317.csv", "r")
 VT = F.read().split('\r')
 F.close()
 
@@ -109,7 +109,7 @@ for i in range(1,len(VT)-1):
 
     VTreport.append(newline)
 
-#----- Combine CC and TR if they're unique
+#----- Combine CC and TL if they're unique
 CCandTL = []
 CCandTL = CCandTL + TLreport
 
@@ -122,3 +122,5 @@ TransactionNumbers = []
 for line in CCandTL:
     TransactionNumbers.append(line[5])
     del line[5]
+    
+#---- Combine CCandTL with VTreport
