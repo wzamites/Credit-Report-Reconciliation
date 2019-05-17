@@ -1,6 +1,8 @@
 # Credit-Report-Reconciliation
 Learn the differences between three reports with a GUI
 
+A Windows application that takes messy .txt files for the purpose of contrasting nearly-identical lists of transactions. The output is a single .csv for easy data quality checks.
+
 FYI: This program does not store, collect or pull financial data from anywhere. It 
 requires the user to download necessary files with valid login credentials. The program
 only reads and writes masked card numbers (last 4 digits). 
